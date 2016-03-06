@@ -1,0 +1,29 @@
+{
+  "name": "bankbotsbank",
+  "version": "1.0.0",
+  "description": "A bank of bank bots",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d build",
+    "start": "node build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "nightmare": "^2.2.0"
+  },
+  "engines": {
+    "node": "5.7.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.6.0",
+    "babel-plugin-transform-async-to-generator": "^6.5.0",
+    "babel-plugin-transform-es2015-block-scoping": "^6.6.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.6.5",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.6.5",
+    "babel-plugin-transform-es2015-parameters": "^6.6.5"
+  }
+}

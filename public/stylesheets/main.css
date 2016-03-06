@@ -1,0 +1,46 @@
+* { margin: 0 }
+
+body {
+  display: -webkit-flex;
+  display: flex;
+  min-height: 100vh;
+}
+
+main {
+  margin-top: 5em;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  text-align: left;
+  font-family: sans-serif;
+  width: 80%;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+h2 {
+  margin-top: 0;
+  font-weight: normal;
+}
+
+p {
+  margin-top: 1em;
+  line-height: 1.5em;
+}
+
+form {
+  margin-top: 1em;
+  text-align: left;
+}
+
+form div {
+  width: 100%;
+  padding: 0.5em;
+}
+
+input {
+  padding: 0.5em;
+  font-size: 100%;
+}

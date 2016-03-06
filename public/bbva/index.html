@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>BankBotsBank – API access to your bank accounts</title>
+  <link rel="stylesheet" href="/stylesheets/main.css" />  
+  <meta content="initial-scale=1.0, width=device-width" name="viewport">
+</head>
+<body>
+  <main>
+    <h2>BankBotsBank, API access to your bank accounts</h2>
+    <!-- <h2>BankBotsBank's bot for BBVA</h2> -->    
+    <p>
+      BankBotsBank is an <strong>open effort</strong> to develop bots that provide programmatic access to accounts in any bank of the world.
+    </p>
+    <p>
+      See the code and contribute on <a href="https://github.com/bankbotsbank/bankbotsbank">GitHub</a>!
+    </p>
+    <p>
+      This form lets you try the bot for the Spanish bank BBVA.
+    </p>
+    <form action="/bbva/transactions" method="POST">
+      <div>
+        <input name="username" type="text" placeholder="Username" />
+      </div>
+      <div>
+        <input name="password" type="password" placeholder="Password" />  
+      </div>
+      <div>
+      <input type="submit" value="Get transactions as JSON" />
+      </div>
+    </form>
+  </main>
+</body>
+</html>
