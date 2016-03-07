@@ -10,6 +10,8 @@ It uses [Nightmare](https://github.com/segmentio/nightmare), a browser automatio
 
 This repo also contains the Dockerfile used to deploy the project to AWS Elastic Beanstalk (this is where the [BBVA test form](http://bankbotsbank-env.us-west-2.elasticbeanstalk.com/bbva/) and bot are hosted). It shows how to use `xvfb-run` to run Nightmare on a computer without a graphical display.
 
+## [Discuss on Hacker News](https://news.ycombinator.com/item?id=11241713)
+
 ## License
 
 MIT
