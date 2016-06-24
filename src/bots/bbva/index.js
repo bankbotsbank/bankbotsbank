@@ -60,9 +60,9 @@ Nightmare.action('fetchTransactionsJson', function (done) {
 function fetchTransactions(nightmare) {
   return new Promise((resolve, reject) => {
     nightmare
-      // `wait` required for fetchTransactionsJson() to work (doesn't work with only
-      // 2 seconds, sometimes doesn't work with 3 either)
-      .wait(4000)
+      // `wait` required for fetchTransactionsJson() to work (sometimes doesn't
+      // work with only 1.5 seconds)
+      .wait(2000)
       .fetchTransactionsJson()
       .wait('body[data-transactions]')
       .evaluate(function () {
@@ -89,7 +89,7 @@ function fetchTransactions(nightmare) {
 
 function login(username, password) {
   return new Promise((resolve, reject) => {
-    const nightmare = new Nightmare({ waitTimeout: 10000 });
+    const nightmare = new Nightmare({ images: false, waitTimeout: 10000 });
     nightmare
       .goto('https://www.bbva.es/particulares/index.jsp')
       .click('.c-menu-accesoUsuario .c-botones-generico')
