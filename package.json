@@ -1,6 +1,6 @@
 {
   "name": "bankbotsbank",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "A bank of bank bots",
   "main": "index.js",
   "scripts": {
@@ -13,17 +13,17 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "nightmare": "^2.5.3"
+    "nightmare": "^2.7.0"
   },
   "engines": {
-    "node": "6.3"
+    "node": "6.5"
   },
   "devDependencies": {
-    "babel-cli": "^6.11.4",
+    "babel-cli": "^6.14.0",
     "babel-plugin-transform-async-to-generator": "^6.8.0",
-    "babel-plugin-transform-es2015-block-scoping": "^6.10.1",
+    "babel-plugin-transform-es2015-block-scoping": "^6.15.0",
     "babel-plugin-transform-es2015-destructuring": "^6.9.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.11.5",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.14.0",
     "babel-plugin-transform-es2015-parameters": "^6.11.4"
   },
   "babel": {

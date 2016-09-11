@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/node/
-FROM node:6.3
+FROM node:6.5
 
 # Updating ubuntu packages
 RUN apt-get update

@@ -7,6 +7,7 @@ Nightmare.action('fetchTransactionsJson', function (done) {
       var bodyDataset = document.getElementsByTagName('body')[0].dataset;
       var url = 'https://www.bbva.es/BBVANet/subhome-cuentas-tarjetas/buscadormovimientos/0?numeroMovimientosPorPagina=20';
       var xhr = new XMLHttpRequest();
+
       if (!xhr) {
         bodyDataset.transactions =
           JSON.stringify({ errors: [{ code: 'cannot_create_xmlhttprequest' }] });
@@ -16,7 +17,7 @@ Nightmare.action('fetchTransactionsJson', function (done) {
             JSON.stringify({ errors: [{ code: 'request_timeout', meta: { url: url } }] });
         };
         xhr.onload = function() {
-          if (xhr.readyState === 4) { 
+          if (xhr.readyState === 4) {
             if (xhr.status === 200) {
               var transactions =
                 JSON.parse(xhr.responseText).listaMovimientos.map(function(t) {
@@ -42,7 +43,7 @@ Nightmare.action('fetchTransactionsJson', function (done) {
                 errors: [{
                   code: 'request_error',
                   meta: { url: url, statusText: xhr.statusText }
-                }] 
+                }]
               });
             }
           }
@@ -97,13 +98,31 @@ function login(username, password) {
       .type('input[name="eai_password"]', password)
       .click('#acceder')
       .wait(function () {
-        return document.title === 'Error' || document.title === 'BBVA';
+        var isLoginResultAvailable = false;
+        var pattern = /Online banking by BBVA|Banca Online de BBVA/i;
+
+        if (document.title.match(pattern)) {
+          // Handles client side validation errors like
+          // "The Tax Code letter is incorrect".
+          var validationOutput =
+            document.getElementById('validationSummaryOutput');
+          // `textContent` because `innerText` is non-standard
+          // https://developer.mozilla.org/en-US/docs/Web/API/Node/innerText
+          isLoginResultAvailable =
+            validationOutput &&
+            validationOutput.textContent.trim() !== '';
+        } else if (['Error', 'BBVA'].includes(document.title)) {
+          isLoginResultAvailable = true;
+        }
+        return isLoginResultAvailable;
       })
       .evaluate(function () {
-        return document.title !== 'Error';
+        // "BBVA" is the title of the page on successful login
+        return document.title === 'BBVA';
       })
       .run(function (err, wasLoginSuccessful) {
         let error;
+
         if (err) {
           error = { code: 'run_error', meta: { data: err.toString() } };
         } else if (wasLoginSuccessful) {
@@ -120,9 +139,10 @@ async function fetch({ username, password }) {
   let error;
   let transactions;
   let session;
+
   ({ error, data: session } = await login(username, password));
   if (!error) {
-    ({ error, data: { transactions, session } } = await fetchTransactions(session));    
+    ({ error, data: { transactions, session } } = await fetchTransactions(session));
   }
   session
     .end()
